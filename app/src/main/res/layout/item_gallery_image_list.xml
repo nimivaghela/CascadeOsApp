@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_10">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardHostImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_5"
+            app:cardCornerRadius="@dimen/dp_8"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/color_lightGrey"
+            app:strokeWidth="@dimen/dp_1">
+
+            <ImageView
+                android:id="@+id/ivGalleryImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_photo" />
+
+          <!--  <VideoView
+                android:id="@+id/video_viewer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center"
+                android:fitsSystemWindows="true"
+                android:visibility="gone" />-->
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPlay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:srcCompat="@drawable/play_circle_filled_white" />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

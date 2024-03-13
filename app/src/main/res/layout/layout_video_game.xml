@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="mainClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/img_bg_green"
+        android:clickable="true"
+        android:focusable="true">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/main_card"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            android:clipChildren="false"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_view_video_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0"
+                    android:layout_marginHorizontal="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="@dimen/dp_13"
+                    app:cardElevation="@dimen/dp_0"
+                    app:layout_constraintBottom_toTopOf="@id/card_view_controller"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.media3.ui.PlayerView
+                        android:id="@+id/exo_player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:resize_mode="fill"
+                        app:surface_type="texture_view"
+                        app:use_controller="false" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_video_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_view_controller"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_marginBottom="@dimen/dp_35"
+                    app:cardBackgroundColor="@color/color_A5E1D1"
+                    app:cardCornerRadius="@dimen/dp_13"
+                    app:cardElevation="@dimen/dp_0"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_backward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="@dimen/dp_5"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{mainClickListener::onClick}"
+                                android:text="@string/backward"
+                                android:textColor="@color/black"
+                                android:textSize="8sp"
+                                app:drawableStartCompat="@drawable/icon_backward"
+                                app:layout_constraintBottom_toTopOf="@id/rvGames"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_a"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                app:layout_constraintTop_toTopOf="@id/img_icon_joystick" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/img_icon_a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_backward"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_joystick"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_backward"
+                                app:layout_constraintTop_toTopOf="@id/img_icon_backward"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:srcCompat="@drawable/icon_a" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/img_icon_b"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_forward"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_forward"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_joystick"
+                                app:layout_constraintTop_toTopOf="@id/img_icon_forward"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                app:srcCompat="@drawable/icon_b" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_forward"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="@dimen/dp_5"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{mainClickListener::onClick}"
+                                android:text="@string/forward"
+                                android:textColor="@color/black"
+                                android:textSize="8sp"
+                                app:drawableEndCompat="@drawable/icon_forward"
+                                app:layout_constraintBottom_toTopOf="@id/rvGameApps"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_b"
+                                app:layout_constraintTop_toTopOf="@id/img_icon_joystick" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_call_of_duty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{clickListener::onClick}"
+                                android:text="@string/txt_call_of_duty"
+                                android:textColor="@color/black"
+                                android:textSize="6sp"
+                                android:visibility="gone"
+                                app:drawableTopCompat="@drawable/icon_call_of_duty"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_contract_killer"
+                                app:layout_constraintHorizontal_chainStyle="spread"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_contract_killer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{clickListener::onClick}"
+                                android:text="@string/txt_contract_killer"
+                                android:textColor="@color/black"
+                                android:textSize="6sp"
+                                android:visibility="gone"
+                                app:drawableTopCompat="@drawable/icon_contract_killer_game"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_call_of_duty"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_angry_bird"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_call_of_duty" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_angry_bird"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{clickListener::onClick}"
+                                android:text="@string/txt_angry_bird"
+                                android:textColor="@color/black"
+                                android:textSize="6sp"
+                                android:visibility="gone"
+                                app:drawableTopCompat="@drawable/icon_angry_bird_game"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_call_of_duty"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_gt_racing"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_contract_killer" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_gt_racing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:onClick="@{clickListener::onClick}"
+                                android:text="@string/txt_gt_racing"
+                                android:textColor="@color/black"
+                                android:textSize="6sp"
+                                android:visibility="gone"
+                                app:drawableTopCompat="@drawable/icon_gt_racing_game"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_call_of_duty"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_formula_1"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_angry_bird" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/img_icon_formula_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/inter"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:onClick="@{clickListener::onClick}"
+                                android:text="@string/txt_formula_1"
+                                android:textColor="@color/black"
+                                android:textSize="6sp"
+                                app:drawableTopCompat="@drawable/icon_formula_1_gaming"
+                                app:layout_constraintBottom_toBottomOf="@id/img_icon_call_of_duty"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_joystick" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvGames"
+                                android:layout_width="@dimen/dp_0"
+                                android:layout_height="63dp"
+                                android:layout_marginVertical="@dimen/dp_3"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                android:paddingBottom="@dimen/dp_2"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/img_icon_joystick"
+                                app:layout_constraintHorizontal_chainStyle="packed"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:itemCount="8"
+                                tools:listitem="@layout/item_app_icon" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/img_icon_joystick"
+                                android:layout_width="@dimen/dp_100"
+                                android:layout_height="@dimen/dp_100"
+                                android:layout_marginStart="@dimen/dp_10"
+                                android:layout_marginEnd="@dimen/dp_10"
+                                android:onClick="@{clickListener::onClick}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:srcCompat="@drawable/icon_joystick" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvGameApps"
+                                android:layout_width="@dimen/dp_0"
+                                android:layout_height="63dp"
+                                android:layout_marginVertical="@dimen/dp_3"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/dp_10"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/img_icon_joystick"
+                                tools:itemCount="4"
+                                tools:listitem="@layout/item_multicast_app" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_after_full_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_icon_a_after_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="38dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_a" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_icon_b_after_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="38dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/img_icon_a_after_zoom"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_b" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_icon_joystick_after_zoom"
+                        android:layout_width="@dimen/dp_100"
+                        android:layout_height="@dimen/dp_100"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:onClick="@{clickListener::onClick}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.85"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_joystick" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/layout_hidden_actionbar_close"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layout_hidden_actionbar"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    android:id="@+id/action_bar"
+                    layout="@layout/include_action_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"
+                    tools:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_32"
+                    android:layout_margin="@dimen/dp_15"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_close"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_3"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_3"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

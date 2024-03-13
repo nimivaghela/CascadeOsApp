@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.fragment.VideoCallFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_fake_videoimage"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="58dp"
+            android:layout_height="74dp"
+            android:layout_marginStart="@dimen/dp_8"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.876" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_videoOf"
+            android:layout_width="28dp"
+            android:layout_height="44dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_videocam_off"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/viewFinder"
+            app:layout_constraintEnd_toEndOf="@+id/viewFinder"
+            app:layout_constraintStart_toStartOf="@+id/viewFinder"
+            app:layout_constraintTop_toTopOf="@+id/viewFinder"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="10dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/mute_feature"
+                app:backgroundTint="@color/white_20"
+                android:layout_gravity="center"
+                app:fabSize="mini"
+                app:maxImageSize="@dimen/dp_12"
+                app:fabCustomSize="@dimen/dp_28"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:tint="@color/white"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_mic_off" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_videoOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/video_off"
+                app:backgroundTint="@color/white_20"
+                app:fabSize="mini"
+                app:maxImageSize="@dimen/dp_12"
+                app:fabCustomSize="@dimen/dp_28"
+                android:layout_gravity="center"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_off"
+                app:layout_constraintStart_toEndOf="@+id/fab_mute"
+                app:srcCompat="@drawable/ic_video_call" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/holo_red_light"
+                android:padding="@dimen/dp_4"
+                app:fabSize="mini"
+                app:maxImageSize="@dimen/dp_14"
+                app:fabCustomSize="@dimen/dp_28"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_call_end"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_sharingScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/sharing_screen"
+                app:backgroundTint="@color/white_20"
+                app:fabSize="mini"
+                app:maxImageSize="@dimen/dp_12"
+                app:fabCustomSize="@dimen/dp_28"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fab_message"
+                app:layout_constraintStart_toEndOf="@+id/btn_off"
+                app:srcCompat="@drawable/ic_sharing_screen" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/message"
+                app:backgroundTint="@color/white_20"
+                app:fabSize="mini"
+                app:maxImageSize="@dimen/dp_12"
+                app:fabCustomSize="@dimen/dp_28"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_video_message" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

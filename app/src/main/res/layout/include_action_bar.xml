@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/rounded_actionBar"
+            app:srcCompat="@drawable/img_action_bar" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_close"
+            android:padding="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_full_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_full_screen"
+            android:padding="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_full_screen" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_minimize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_minimize"
+            android:padding="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_full_screen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_minimize" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_cascade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_cascade"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_minimize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_cascade" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_3"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/inter_semi_bold"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingStart="@dimen/dp_0"
+            android:paddingEnd="@dimen/dp_20"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:fontFamily="@font/inter_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_cascade"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="App Name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

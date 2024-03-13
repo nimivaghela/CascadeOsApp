@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isFullscreen"
+            type="Boolean" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="bidUserName"
+            type="String" />
+
+        <variable
+            name="bidAmount"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/img_bg_green"
+        android:clickable="true"
+        android:focusable="true">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/main_card"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            android:clipChildren="false"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+                <View
+                    android:id="@+id/highlightView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:animateLayoutChanges="false"
+                    android:background="@drawable/ic_video_back_shadow"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/img_icon_previous"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_view_video_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0"
+                    android:layout_marginHorizontal="@dimen/dp_12"
+                    android:layout_marginVertical="@dimen/dp_10"
+                    app:cardBackgroundColor="@color/black"
+                    app:cardCornerRadius="@dimen/dp_13"
+                    app:cardElevation="@dimen/dp_0"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintBottom_toTopOf="@id/img_icon_previous"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="@dimen/dp_2">
+
+                    <androidx.media3.ui.PlayerView
+                        android:id="@+id/exo_player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:alpha="0.0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:resize_mode="fill"
+                        app:use_controller="false" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_video_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/introAnimationLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/rounded_shape"
+                    android:backgroundTint="@color/black_80"
+                    app:layout_constraintBottom_toBottomOf="@id/card_view_video_bg"
+                    app:layout_constraintEnd_toEndOf="@id/card_view_video_bg"
+                    app:layout_constraintStart_toStartOf="@id/card_view_video_bg"
+                    app:layout_constraintTop_toTopOf="@id/card_view_video_bg"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgIntro"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/cool_tv_intro"
+                        app:layout_constraintBottom_toTopOf="@+id/tvIntro"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.53"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <com.nitish.typewriterview.TypeWriterView
+                        android:id="@+id/tvIntro"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/fredoka_light"
+                        android:gravity="center"
+                        android:paddingHorizontal="@dimen/dp_5"
+                        android:textColor="@color/color_green_frame"
+                        android:textSize="@dimen/sp_24"
+                        android:textStyle="italic|bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgIntro"
+                        tools:text="@string/coolTvNetworkTm" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bidCountView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_20"
+                    android:background="@color/white_10"
+                    android:elevation="@dimen/dp_5"
+                    android:paddingHorizontal="@dimen/dp_10"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@id/card_view_video_bg"
+                    app:layout_constraintTop_toTopOf="@id/card_view_video_bg"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvBidUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bidUserName}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/simmy_jackson" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvBidAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bidAmount}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvBidUserName"
+                        tools:text="@string/simmy_jackson" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/congratulationLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_20"
+                    android:background="@drawable/rounded_shape"
+                    android:backgroundTint="@color/black_80"
+                    android:paddingVertical="@dimen/dp_10"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/card_view_video_bg"
+                    app:layout_constraintEnd_toEndOf="@id/card_view_video_bg"
+                    app:layout_constraintStart_toStartOf="@id/card_view_video_bg"
+                    app:layout_constraintTop_toTopOf="@id/card_view_video_bg"
+                    tools:visibility="gone">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvCongrats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="🎉 Congratulation !! 🎉"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_18"
+                        android:textStyle="bold|italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvWinnerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/simmy_jackson"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCongrats" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvWinnerAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter"
+                        android:text="@string/_90_million"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvWinnerName" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgBidSent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/black_80"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bid_sent"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@id/card_view_video_bg"
+                    app:layout_constraintEnd_toEndOf="@id/card_view_video_bg"
+                    app:layout_constraintStart_toStartOf="@id/card_view_video_bg"
+                    app:layout_constraintTop_toTopOf="@id/card_view_video_bg"
+                    app:shapeAppearanceOverlay="@style/bidSendRoundedBackground"
+                    tools:visibility="gone" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/playerWidgetGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:constraint_referenced_ids="img_icon_previous,img_icon_play,seekbar_video,img_icon_stop,img_icon_next,view_line" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon_previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:onClick="@{clickListener::onClick}"
+                    app:layout_constraintBottom_toTopOf="@id/view_line"
+                    app:layout_constraintStart_toStartOf="@id/card_view_video_bg"
+                    app:srcCompat="@drawable/icon_backward_with_shine" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{clickListener::onClick}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_icon_previous"
+                    app:layout_constraintStart_toEndOf="@id/img_icon_previous"
+                    app:layout_constraintTop_toTopOf="@id/img_icon_previous"
+                    app:srcCompat="@drawable/icon_play_with_shine" />
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/seekbar_video"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_5"
+                    android:background="@drawable/icon_video_seek_bar_bg"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:progressDrawable="@drawable/custom_video_seekbar"
+                    android:thumb="@drawable/icon_progress_point"
+                    app:layout_constraintBottom_toBottomOf="@id/img_icon_previous"
+                    app:layout_constraintEnd_toStartOf="@id/img_icon_stop"
+                    app:layout_constraintStart_toEndOf="@id/img_icon_play"
+                    app:layout_constraintTop_toTopOf="@id/img_icon_previous"
+                    tools:progress="50" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon_stop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{clickListener::onClick}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_icon_previous"
+                    app:layout_constraintEnd_toStartOf="@id/img_icon_next"
+                    app:layout_constraintTop_toTopOf="@id/img_icon_previous"
+                    app:srcCompat="@drawable/icon_stop_with_bg" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_icon_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{clickListener::onClick}"
+                    app:layout_constraintBottom_toBottomOf="@id/img_icon_previous"
+                    app:layout_constraintEnd_toEndOf="@id/card_view_video_bg"
+                    app:layout_constraintTop_toTopOf="@id/img_icon_previous"
+                    app:srcCompat="@drawable/icon_next_with_bg" />
+
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:background="@color/color_0C1412"
+                    app:layout_constraintBottom_toTopOf="@id/rvCoolTvApps" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCoolTvApps"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="53dp"
+                    android:layout_marginHorizontal="@dimen/dp_10"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_cooltv_app" />
+
+                <View
+                    android:id="@+id/layout_hidden_actionbar_close"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layout_hidden_actionbar"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <include
+                    android:id="@+id/action_bar"
+                    layout="@layout/include_action_bar"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_3"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_3"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_32"
+                    android:layout_margin="@dimen/dp_15"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

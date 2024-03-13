@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="a_width">364</integer>
+    <integer name="b_width">400</integer>
+    <integer name="c_width">364</integer>
+    <integer name="a_height">253</integer>
+    <integer name="b_height">400</integer>
+    <integer name="c_height">235</integer>
+    <integer name="a_start">0</integer>
+    <integer name="b_start">252</integer>
+    <integer name="c_start">651</integer>
+
+</resources>

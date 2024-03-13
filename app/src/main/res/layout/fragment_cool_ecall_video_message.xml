@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/main_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_messages"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/layout_send_messages"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:stackFromEnd="true"
+                    tools:listitem="@layout/item_video_chat_message" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_send_messages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_green_frame"
+                    android:padding="@dimen/dp_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/btn_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginHorizontal="@dimen/dp_5"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/dp_3"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_send"
+                        app:layout_constraintEnd_toStartOf="@id/btn_send"
+                        app:layout_constraintStart_toEndOf="@id/btn_camera"
+                        app:layout_constraintTop_toTopOf="@+id/btn_send"
+                        app:strokeColor="@color/color_message_card_border"
+                        app:strokeWidth="@dimen/dp_1">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edit_msg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/inter_semi_bold"
+                            android:imeOptions="flagNoExtractUi"
+                            android:inputType="text"
+                            android:paddingHorizontal="@dimen/dp_16"
+                            android:textColor="@color/black"
+                            android:textSize="8sp"
+                            tools:text="Yes!" />
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/btn_send"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_send_btn"
+                        android:paddingHorizontal="@dimen/dp_7"
+                        android:paddingVertical="@dimen/dp_3"
+                        android:text="@string/send"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/hangingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#80000000"
+                    android:paddingHorizontal="@dimen/dp_10"
+                    app:alignContent="flex_start"
+                    app:alignItems="flex_start"
+                    app:flexWrap="wrap"
+                    app:justifyContent="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_height="@dimen/dp_30" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

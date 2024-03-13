@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isVideo"
+            type="boolean" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/transparent"
+        tools:context=".fragments.CameraFragment">
+
+        <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/cameraView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:keepScreenOn="true"
+            app:cameraExperimental="true"
+            app:cameraEngine="camera2"
+            app:cameraPreview="glSurface"
+            app:cameraPlaySounds="true"
+            app:cameraUseDeviceOrientation="true"
+            app:cameraGrid="off"
+            app:cameraFlash="off"
+            app:cameraAudio="on"
+            app:cameraFacing="back"
+            app:cameraGesturePinch="zoom"
+            app:cameraMode="picture"
+            app:cameraWhiteBalance="auto"
+            app:cameraPictureSizeMaxWidth="892"
+            app:cameraPictureSizeMaxHeight="412"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.4"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnTakePicture"
+            app:layout_constraintTop_toTopOf="parent" />
+
+      <!--  <TextView
+            android:id="@+id/tvVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="270"
+            android:text="@string/video"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintBottom_toTopOf="@id/tvPhoto"
+            app:layout_constraintEnd_toEndOf="@id/tvPhoto"
+            app:layout_constraintStart_toStartOf="@id/tvPhoto"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tvPhoto"
+            style="@style/photoButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:rotation="270"
+            android:text="@string/photo"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnTakePicture"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageButton
+            android:id="@+id/btnGallery"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/ic_capture_camera"
+            android:padding="@dimen/dp_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_no_picture"
+            app:layout_constraintBottom_toTopOf="@id/btnTakePicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnTakePicture"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnTakePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/dp_32"
+            android:src="@{isVideo ? @drawable/ic_capture_video : @drawable/ic_capture_camera}"
+            tools:src="@drawable/ic_capture_camera"
+            app:layout_constraintBottom_toTopOf="@id/btnSwitchCamera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnGallery"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/bg_button_round"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flip_camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnTakePicture"
+            app:layout_constraintTop_toBottomOf="@id/btnTakePicture"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnTimer"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_8"
+            visibleGone="@{!isVideo}"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_timer_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnGrid"
+            app:layout_constraintEnd_toEndOf="@id/btnGrid"
+            app:layout_constraintTop_toBottomOf="@id/btnGrid"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnGrid"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_grid_off"
+            app:layout_constraintBottom_toTopOf="@id/btnTimer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnFlash"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnFlash"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flash_off"
+            app:layout_constraintBottom_toTopOf="@id/btnGrid"
+            app:layout_constraintEnd_toEndOf="@id/btnGrid"
+            app:layout_constraintStart_toStartOf="@id/btnGrid"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <!--<ImageButton
+            android:id="@+id/btnHdr"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:visibility="gone"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_hdr_off"
+            app:layout_constraintBottom_toTopOf="@id/btnFlash"
+            app:layout_constraintEnd_toEndOf="@id/btnTimer"
+            app:layout_constraintStart_toStartOf="@id/btnTimer"
+            app:layout_constraintTop_toBottomOf="@id/btnExposure"
+            tools:ignore="ContentDescription" />-->
+
+
+        <View
+            android:id="@+id/viewBg2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black_40"
+            android:elevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnGrid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnTimerOff"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_timer_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnTimer3"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnTimer3"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_timer_3"
+            app:layout_constraintBottom_toTopOf="@id/btnTimerOff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnTimer10"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnTimer10"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_timer_10"
+            app:layout_constraintBottom_toTopOf="@id/btnTimer3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="btnTimerOff,btnTimer3,btnTimer10"
+            tools:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btnFlashOff"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_flash_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnFlashAuto"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnFlashAuto"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_flash_auto"
+            app:layout_constraintBottom_toTopOf="@id/btnFlashOff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnFlashOn"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btnFlashOn"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:rotation="270"
+            android:src="@drawable/ic_flash_on"
+            app:layout_constraintBottom_toTopOf="@id/btnFlashAuto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupFlash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="btnFlashOff,btnFlashAuto,btnFlashOn"
+            tools:visibility="gone" />
+
+        <!--<LinearLayout
+            android:id="@+id/llFlashOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnTimer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/btnFlashOff"
+                android:layout_width="@dimen/dp_36"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:rotation="270"
+                android:src="@drawable/ic_flash_off"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/btnFlashAuto"
+                android:layout_width="@dimen/dp_36"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:rotation="270"
+                android:src="@drawable/ic_flash_auto"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/btnFlashOn"
+                android:layout_width="@dimen/dp_36"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:rotation="270"
+                android:src="@drawable/ic_flash_on"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>-->
+
+      <!--  <FrameLayout
+            android:id="@+id/flExposure"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="3dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8"
+            android:rotation="270"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvCountDown"
+            app:layout_constraintStart_toEndOf="@id/btnTimer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderExposure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dp_16"
+                android:background="@drawable/bg_options"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:paddingVertical="@dimen/dp_8"
+                android:progressBackgroundTint="@android:color/white"
+                app:haloColor="@color/colorAccent"
+                app:thumbColor="@color/colorAccent" />
+        </FrameLayout>-->
+
+        <TextView
+            android:id="@+id/tvCountDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:rotation="270"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_72"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            app:backgroundTint="@color/black_10"
+            app:fabSize="mini"
+            app:tint="@color/white"
+            app:elevation="0dp"
+            app:hoveredFocusedTranslationZ="0dp"
+            app:pressedTranslationZ="0dp"
+            app:rippleColor="@color/color_bright_cyan"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btn_mode"
+            app:layout_constraintStart_toStartOf="@+id/btn_mode"
+            app:srcCompat="@drawable/ic_photo_filter" />
+
+        <Chronometer
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            visibleGone="@{isVideo}"
+            android:layout_margin="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/viewBg2"
+            tools:text="00:00" />
+
+
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/btn_mode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:rotation="270"
+            app:checkedButton="@id/btn_photo"
+            app:layout_constraintEnd_toStartOf="@id/btnSwitchCamera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/photo"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/white"
+                app:strokeColor="@color/colorButtonGreyBg"
+                app:backgroundTint="@color/color_camera_mode"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/video"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                app:strokeColor="@color/colorButtonGreyBg"
+                app:backgroundTint="@color/color_camera_mode"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                />
+
+
+
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

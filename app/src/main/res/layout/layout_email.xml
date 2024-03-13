@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="focusListener"
+            type="android.view.View.OnFocusChangeListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/img_bg_green"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/main_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true">
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fillViewport="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/action_bar">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true"
+                        android:background="@drawable/ic_email_body_bg">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/emailSendHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            android:background="@color/color_lightGrey"
+                            android:paddingBottom="@dimen/dp_10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/tvSenderLabel"
+                                style="@style/inter_600"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_10"
+                                android:text="@string/to"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/sp_10"
+                                app:layout_constraintBottom_toBottomOf="@id/edtSenderMail"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/edtSenderMail"
+                                app:layout_constraintWidth_percent="0.3" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtSenderMail"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_15"
+                                android:background="@drawable/ic_editbox_background"
+                                android:backgroundTint="@null"
+                                android:imeOptions="flagNoExtractUi"
+                                android:inputType="textEmailAddress"
+                                android:onFocusChange="@{focusListener::onFocusChange}"
+                                android:padding="@dimen/dp_5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/sp_10"
+                                android:textStyle="italic"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintWidth_percent="0.6"
+                                tools:text="john@gmail.com" />
+
+                            <TextView
+                                android:id="@+id/tvSubjectLabel"
+                                style="@style/inter_600"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_10"
+                                android:text="@string/subject"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/sp_10"
+                                app:layout_constraintBottom_toBottomOf="@id/edtSubject"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/edtSubject"
+                                app:layout_constraintWidth_percent="0.3" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtSubject"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_10"
+                                android:layout_marginVertical="@dimen/dp_15"
+                                android:background="@drawable/ic_editbox_background"
+                                android:backgroundTint="@null"
+                                android:imeOptions="flagNoExtractUi"
+                                android:onFocusChange="@{focusListener::onFocusChange}"
+                                android:padding="@dimen/dp_5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/sp_10"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/edtSenderMail"
+                                app:layout_constraintWidth_percent="0.6"
+                                tools:text="Test Mail" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtEmailBody"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/compose_email"
+                            android:imeOptions="flagNoExtractUi"
+                            android:onFocusChange="@{focusListener::onFocusChange}"
+                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingTop="@dimen/dp_8"
+                            android:paddingBottom="200dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_10"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHeight_default="wrap"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/emailSendHeader"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:text="Hello All" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </ScrollView>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/img_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="28dp"
+                    android:backgroundTint="@color/color_email_header"
+                    android:contentDescription="@string/send"
+                    android:onClick="@{clickListener::onClick}"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/ic_send"
+                    app:tint="@color/white" />
+
+                <View
+                    android:id="@+id/layout_hidden_actionbar"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_32"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    android:id="@+id/action_bar"
+                    layout="@layout/include_action_bar"
+                    android:animateLayoutChanges="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_resize_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_3"
+                    android:src="@drawable/ic_resize"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

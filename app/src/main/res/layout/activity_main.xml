@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.MainActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_app_list_a"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_42"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="48dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="3"
+            tools:listitem="@layout/item_home_screen_app" />
+
+        <LinearLayout
+            android:id="@+id/dummyLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="48dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_app_list_c"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="48dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="3"
+            tools:listitem="@layout/item_home_screen_app" />
+
+        <View
+            android:id="@+id/view_bottom_bar"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="@dimen/dp_5"
+            android:background="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_bottom_bar_middle"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="@id/view_bottom_bar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitStart"
+            android:src="@drawable/icon_bottom_bar_left"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="@id/view_bottom_bar" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_bottom_bar_right"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toTopOf="@id/view_bottom_bar" />
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_bottom_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="img_bottom_bar_right,img_bottom_bar_middle,img_bottom_bar_left,view_bottom_bar"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow_c"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="13dp"
+            app:constraint_referenced_ids="app_phone_system,app_digital_locker,app_cool_tv,app_muticast,internet"
+            app:flow_horizontalGap="11dp"
+            app:layout_constraintBottom_toTopOf="@id/view_bottom_bar"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintStart_toEndOf="@id/guideline1" />
+
+        <TextView
+            android:id="@+id/app_phone_system"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/phone_system"
+            app:drawableTopCompat="@drawable/ic_phone_system" />
+
+        <TextView
+            android:id="@+id/app_digital_locker"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/digital_locker"
+            app:drawableTopCompat="@drawable/ic_digital_locker" />
+
+        <TextView
+            android:id="@+id/app_cool_tv"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/cool_tv"
+            app:drawableTopCompat="@drawable/ic_cool_tv" />
+
+
+        <TextView
+            android:id="@+id/app_muticast"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/multicast_system"
+            app:drawableTopCompat="@drawable/ic_multicast_system" />
+
+
+        <TextView
+            android:id="@+id/internet"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="0dp"
+            android:text="@string/interactive_internet_n"
+            app:drawableTopCompat="@drawable/ic_internet" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="265dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="264dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

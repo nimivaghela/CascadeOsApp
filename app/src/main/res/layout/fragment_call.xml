@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isCallStart"
+            type="boolean" />
+
+        <variable
+            name="isMute"
+            type="boolean" />
+
+        <variable
+            name="isHold"
+            type="boolean" />
+
+        <variable
+            name="isSpeaker"
+            type="boolean" />
+
+        <variable
+            name="isKeyPad"
+            type="boolean" />
+
+        <variable
+            name="callFragment"
+            type="com.app.cascadeos.ui.fragment.CallFragment" />
+
+        <variable
+            name="isUserOnHold"
+            type="boolean" />
+
+        <variable
+            name="isSwapped"
+            type="boolean" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@color/color_call_bg_color"
+            tools:context=".ui.fragment.CallFragment">
+
+            <LinearLayout
+                android:id="@+id/llMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_conference_hold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.5"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_profile_conference"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:src="@drawable/ic_round_profile"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_conference_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="@string/conference_call"
+                        android:textColor="@color/white"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_profile_conference"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_conference_on_hold"
+                        app:layout_constraintStart_toEndOf="@+id/img_profile_conference"
+                        app:layout_constraintTop_toTopOf="@+id/img_profile_conference" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_conference_on_hold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        visibleInvisible="@{!isSwapped}"
+                        android:gravity="center"
+                        android:text="@string/on_hold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_conference_call"
+                        app:layout_constraintStart_toEndOf="@+id/txt_conference_call"
+                        app:layout_constraintStart_toStartOf="@id/txt_conference_call"
+                        app:layout_constraintTop_toBottomOf="@id/txt_conference_call" />
+
+                    <Chronometer
+                        android:id="@+id/chronometer_time_conference"
+                        visibleInvisible="@{isSwapped}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/txt_conference_call"
+                        app:layout_constraintStart_toStartOf="@id/txt_conference_call"
+                        app:layout_constraintTop_toBottomOf="@id/txt_conference_call" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_hold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.5"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_profile_one"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:src="@drawable/ic_call_profile"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_name_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="Andrea James"
+                        android:textColor="@color/white"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_profile_one"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_on_hold"
+                        app:layout_constraintStart_toEndOf="@+id/img_profile_one"
+                        app:layout_constraintTop_toTopOf="@+id/img_profile_one" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_on_hold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        visibleInvisible="@{!isSwapped}"
+                        android:gravity="center"
+                        android:text="@string/on_hold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_name_one"
+                        app:layout_constraintStart_toEndOf="@+id/txt_name_one"
+                        app:layout_constraintStart_toStartOf="@id/txt_name_one"
+                        app:layout_constraintTop_toBottomOf="@id/txt_name_one" />
+
+                    <Chronometer
+                        android:id="@+id/chronometer_time_user"
+                        visibleInvisible="@{isSwapped}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/txt_name_one"
+                        app:layout_constraintStart_toStartOf="@id/txt_name_one"
+                        app:layout_constraintTop_toBottomOf="@id/txt_name_one" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_Dialling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_added_profile"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:src="@drawable/ic_call_user_profile"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_added_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:gravity="center"
+                        android:text="Petrick James"
+                        android:textColor="@color/white"
+                        app:fontFamily="@font/inter_semi_bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_added_profile"
+                        app:layout_constraintBottom_toTopOf="@+id/txt_added_call_status"
+                        app:layout_constraintStart_toEndOf="@+id/img_added_profile"
+                        app:layout_constraintTop_toTopOf="@+id/img_added_profile" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_added_call_status"
+                        visibleInvisible="@{isSwapped}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calling"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintEnd_toEndOf="@id/txt_added_name"
+                        app:layout_constraintStart_toStartOf="@id/txt_added_name"
+                        app:layout_constraintTop_toBottomOf="@id/txt_added_name" />
+
+                    <Chronometer
+                        android:id="@+id/chronometer_time_added_user"
+                        visibleInvisible="@{!isSwapped}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_12"
+                        app:layout_constraintEnd_toEndOf="@id/txt_added_name"
+                        app:layout_constraintStart_toStartOf="@id/txt_added_name"
+                        app:layout_constraintTop_toBottomOf="@id/txt_added_name" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:src="@drawable/ic_call_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_8"
+                    android:gravity="center"
+                    android:text="Andrea James"
+                    android:textColor="@color/white"
+                    app:fontFamily="@font/inter_semi_bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/img_profile" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="@id/txt_name"
+                    app:layout_constraintStart_toStartOf="@id/txt_name"
+                    app:layout_constraintTop_toBottomOf="@id/txt_name"
+                    tools:text="+919876543210" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_call_status"
+                    visibleInvisible="@{!isCallStart}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/calling"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="@id/txt_phone_number"
+                    app:layout_constraintStart_toStartOf="@id/txt_phone_number"
+                    app:layout_constraintTop_toBottomOf="@id/txt_phone_number" />
+
+                <Chronometer
+                    android:id="@+id/chronometer_time"
+                    visibleInvisible="@{isCallStart}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@id/txt_phone_number"
+                    app:layout_constraintStart_toStartOf="@id/txt_phone_number"
+                    app:layout_constraintTop_toBottomOf="@id/txt_phone_number" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_mute"
+                stateUpdateFb="@{isMute}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_hold"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5"
+                app:srcCompat="@drawable/ic_mic_off"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_hold"
+                stateUpdateFb="@{isHold}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_mute"
+                app:layout_constraintEnd_toStartOf="@+id/btn_video"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_mute"
+                app:layout_constraintTop_toTopOf="@+id/btn_mute"
+                app:srcCompat="@drawable/ic_call_hold"
+                app:tint="@color/white" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_hold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_hold"
+                app:layout_constraintTop_toTopOf="@+id/btn_hold"
+                app:srcCompat="@drawable/ic_call_video"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_speaker"
+                stateUpdateFb="@{isSpeaker}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintEnd_toStartOf="@+id/btn_keyboard"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_mute"
+                app:srcCompat="@drawable/ic_volume_up"
+                app:tint="@color/white" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_keyboard"
+                stateUpdateFb="@{isKeyPad}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintEnd_toStartOf="@+id/btn_add_call"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_speaker"
+                app:layout_constraintTop_toBottomOf="@id/btn_mute"
+                app:srcCompat="@drawable/ic_dial_pad"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_add_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/transparent"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_keyboard"
+                app:layout_constraintTop_toBottomOf="@id/btn_mute"
+                app:srcCompat="@drawable/ic_add_call"
+                app:tint="@color/white" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@android:color/holo_red_light"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_keyboard"
+                app:srcCompat="@drawable/ic_call_end"
+                app:tint="@color/white" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_color"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/dp_8"
+                app:layout_constraintBottom_toBottomOf="@id/txt_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txt_number"
+                app:srcCompat="@drawable/ic_close" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="@dimen/dp_8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                app:fontFamily="@font/inter_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_close"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12345678" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_number" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_one"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_1"
+                app:layout_constraintBottom_toTopOf="@+id/txt_four"
+                app:layout_constraintEnd_toStartOf="@id/txt_two"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_two"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_2"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_one"
+                app:layout_constraintEnd_toStartOf="@id/txt_three"
+                app:layout_constraintStart_toEndOf="@id/txt_one"
+                app:layout_constraintTop_toTopOf="@id/txt_one" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_three"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_3"
+                app:layout_constraintBottom_toBottomOf="@id/txt_two"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt_two"
+                app:layout_constraintTop_toTopOf="@id/txt_two"
+                app:layout_wrapBehaviorInParent="horizontal_only" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_four"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_4"
+                app:layout_constraintBottom_toTopOf="@+id/txt_seven"
+                app:layout_constraintEnd_toEndOf="@id/txt_one"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/txt_one"
+                app:layout_constraintTop_toBottomOf="@+id/txt_one" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_five"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_5"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_four"
+                app:layout_constraintEnd_toEndOf="@id/txt_two"
+                app:layout_constraintStart_toStartOf="@id/txt_two"
+                app:layout_constraintTop_toTopOf="@+id/txt_four" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_six"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_6"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_five"
+                app:layout_constraintEnd_toEndOf="@id/txt_three"
+                app:layout_constraintStart_toStartOf="@id/txt_three"
+                app:layout_constraintTop_toTopOf="@+id/txt_five" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_seven"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_7"
+                app:layout_constraintBottom_toTopOf="@+id/txt_star"
+                app:layout_constraintEnd_toEndOf="@id/txt_four"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/txt_four"
+                app:layout_constraintTop_toBottomOf="@+id/txt_four" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_eight"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_8"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_seven"
+                app:layout_constraintEnd_toEndOf="@id/txt_five"
+                app:layout_constraintStart_toStartOf="@id/txt_five"
+                app:layout_constraintTop_toTopOf="@id/txt_seven" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_nine"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_9"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_eight"
+                app:layout_constraintEnd_toEndOf="@+id/txt_six"
+                app:layout_constraintStart_toStartOf="@+id/txt_six"
+                app:layout_constraintTop_toTopOf="@+id/txt_eight" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_zero"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_0"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_star"
+                app:layout_constraintEnd_toEndOf="@+id/txt_eight"
+                app:layout_constraintStart_toStartOf="@+id/txt_eight"
+                app:layout_constraintTop_toTopOf="@+id/txt_star" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_star"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_star"
+                app:layout_constraintEnd_toEndOf="@+id/txt_seven"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/txt_seven"
+                app:layout_constraintTop_toBottomOf="@+id/txt_seven" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_hash"
+                style="@style/DialerDigitStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:onClick="@{callFragment::onClick}"
+                android:soundEffectsEnabled="false"
+                android:text="@string/_hash"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_zero"
+                app:layout_constraintEnd_toEndOf="@+id/txt_nine"
+                app:layout_constraintStart_toStartOf="@+id/txt_nine"
+                app:layout_constraintTop_toTopOf="@+id/txt_zero" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

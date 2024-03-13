@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCoolTvApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_doller_pressed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCoolTvApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3"
+            android:layout_marginBottom="@dimen/dp_5"
+            app:fontFamily="@font/inter_bold"
+            android:text="@string/txt_click_video_shop"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/imgCoolTvApp"
+            app:layout_constraintStart_toStartOf="@id/imgCoolTvApp"
+            app:layout_constraintTop_toBottomOf="@id/imgCoolTvApp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

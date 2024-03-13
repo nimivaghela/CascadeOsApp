@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAppIcon"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_4"
+            app:layout_constraintBottom_toTopOf="@id/tvAppName"
+            android:padding="@dimen/dp_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_amazon_mini" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAppName"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            app:layout_constraintEnd_toEndOf="@id/ivAppIcon"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAppIcon"
+            android:textColor="@color/black"
+            tools:text="@string/paramount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

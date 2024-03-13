@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.MainActivity">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="265dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_app_list_a"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="@dimen/dp_44"
+            android:layout_marginEnd="@dimen/dp_48"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="5"
+            tools:listitem="@layout/item_home_screen_app" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_app_list_c"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_48"
+            android:layout_marginBottom="@dimen/dp_44"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline2"
+            app:spanCount="5"
+            tools:listitem="@layout/item_home_screen_app" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_13"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="app_phone_system,app_digital_locker,app_cool_tv,app_muticast,internet"
+            app:layout_constraintBottom_toTopOf="@id/guideline2"
+            app:layout_constraintEnd_toStartOf="@id/view_bottom_bar"
+            app:layout_constraintTop_toBottomOf="@id/guideline1" />
+
+        <View
+            android:id="@+id/view_bottom_bar"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:background="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="@id/flow_c"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/flow_c" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_17"
+            android:rotation="270"
+            android:src="@drawable/icon_bottom_bar_middle"
+            app:layout_constraintBottom_toBottomOf="@id/flow_c"
+            app:layout_constraintStart_toStartOf="@id/flow_c"
+            app:layout_constraintTop_toTopOf="@id/flow_c" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_33"
+            android:layout_marginBottom="@dimen/dp_25"
+            android:rotation="270"
+            android:scaleType="fitStart"
+            android:src="@drawable/icon_bottom_bar_left"
+            app:layout_constraintBottom_toBottomOf="@id/flow_c"
+            app:layout_constraintStart_toStartOf="@id/flow_c" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bottom_bar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_36"
+            android:layout_marginTop="@dimen/dp_29"
+            android:rotation="270"
+            android:src="@drawable/icon_bottom_bar_right"
+            app:layout_constraintStart_toStartOf="@id/flow_c"
+            app:layout_constraintTop_toTopOf="@id/view_bottom_bar" />
+
+
+        <!--        <androidx.constraintlayout.widget.Group-->
+        <!--            android:id="@+id/group_bottom_bar"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:visibility="gone"-->
+        <!--            tools:visibility="visible"-->
+        <!--            app:constraint_referenced_ids="img_bottom_bar_right,img_bottom_bar_middle,img_bottom_bar_left,view_bottom_bar"/>-->
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/flow_c"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_phone_system"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/phone_system"
+            app:drawableTopCompat="@drawable/ic_phone_system" />
+
+        <TextView
+            android:id="@+id/app_digital_locker"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/digital_locker"
+            app:drawableTopCompat="@drawable/ic_digital_locker" />
+
+        <TextView
+            android:id="@+id/app_cool_tv"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/cool_tv"
+            app:drawableTopCompat="@drawable/ic_cool_tv" />
+
+
+        <TextView
+            android:id="@+id/app_muticast"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:text="@string/multicast_system"
+            app:drawableTopCompat="@drawable/ic_multicast_system" />
+
+
+        <TextView
+            android:id="@+id/internet"
+            style="@style/AppIconStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="0dp"
+            android:text="@string/interactive_internet_n"
+            app:drawableTopCompat="@drawable/ic_internet" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="264dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

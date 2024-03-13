@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/img_bg_green"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_multicast"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_multicast"
+            app:layout_constraintBottom_toTopOf="@id/img_mail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/rounded_actionBar" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_backward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{clickListener::onClick}"
+            android:src="@drawable/ic_backward"
+            app:layout_constraintBottom_toTopOf="@id/tv_backward"
+            app:layout_constraintEnd_toStartOf="@id/img_mail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearanceOverlay="@style/circleImageview" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{clickListener::onClick}"
+            android:src="@drawable/ic_email"
+            app:layout_constraintBottom_toTopOf="@id/tv_mail"
+            app:layout_constraintEnd_toStartOf="@id/img_keypad"
+            app:layout_constraintStart_toEndOf="@id/img_backward"
+            app:shapeAppearanceOverlay="@style/circleImageview" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_keypad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keypad"
+            android:onClick="@{clickListener::onClick}"
+            app:layout_constraintBottom_toTopOf="@id/tv_keypad"
+            app:layout_constraintEnd_toStartOf="@id/img_forward"
+            app:layout_constraintStart_toEndOf="@id/img_mail"
+            app:shapeAppearanceOverlay="@style/circleImageview" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{clickListener::onClick}"
+            android:src="@drawable/ic_forward"
+            app:layout_constraintBottom_toTopOf="@id/tv_forward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_keypad"
+            app:shapeAppearanceOverlay="@style/circleImageview" />
+
+        <TextView
+            android:id="@+id/tv_backward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_5"
+            android:text="@string/backward"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_8"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/rvMulticastApps"
+            app:layout_constraintEnd_toEndOf="@id/img_backward"
+            app:layout_constraintStart_toStartOf="@id/img_backward" />
+
+        <TextView
+            android:id="@+id/tv_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_24"
+            android:text="@string/mail"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_8"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/rvMulticastApps"
+            app:layout_constraintEnd_toEndOf="@id/img_mail"
+            app:layout_constraintStart_toStartOf="@id/img_mail" />
+
+        <TextView
+            android:id="@+id/tv_keypad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_24"
+            android:text="@string/keypad"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_8"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/rvMulticastApps"
+            app:layout_constraintEnd_toEndOf="@id/img_keypad"
+            app:layout_constraintStart_toStartOf="@id/img_keypad" />
+
+        <TextView
+            android:id="@+id/tv_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_5"
+            android:text="@string/forward"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_8"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/rvMulticastApps"
+            app:layout_constraintEnd_toEndOf="@id/img_forward"
+            app:layout_constraintStart_toStartOf="@id/img_forward" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMulticastApps"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="63dp"
+            android:layout_marginHorizontal="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dp_10"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_multicast_app" />
+
+        <View
+            android:id="@+id/layout_hidden_actionbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/include_action_bar"
+            android:animateLayoutChanges="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_resize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_resize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_resize_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_3"
+            android:src="@drawable/ic_resize"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

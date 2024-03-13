@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "337316720810",
+    "project_id": "cascade-os",
+    "storage_bucket": "cascade-os.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337316720810:android:c32db5ac473f86c7d8e0d3",
+        "android_client_info": {
+          "package_name": "com.app.cascadeos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337316720810-brim1rcv89fsvri1e83m83kgktod95tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZItktxs1hwYoq-UYSEECI34bXQnjHMeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337316720810-brim1rcv89fsvri1e83m83kgktod95tt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

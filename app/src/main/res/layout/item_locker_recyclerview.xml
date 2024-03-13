@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingVertical="@dimen/dp_5">
+
+        <ImageView
+            android:id="@+id/img_list_withButton"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="130dp"
+            android:src="@color/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@id/btnLayout"
+            app:layout_constraintEnd_toEndOf="@id/btnLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_height="130dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/dp_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/layoutPlayOnDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_grey_button_gradient"
+                android:elevation="@dimen/dp_10"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/btnPlayOnDevice"
+                    style="@style/cascadeDialogButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minWidth="@dimen/dp_0"
+                    android:minHeight="@dimen/dp_0"
+                    android:text="@string/play_on_device"
+                    android:textSize="@dimen/sp_10"
+                    app:backgroundTint="@android:color/transparent"
+                    app:cornerRadius="@dimen/dp_5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutBeamOnTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:background="@drawable/ic_grey_button_gradient"
+                android:elevation="@dimen/dp_10"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutPlayOnDevice">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/btnBeamToTv"
+                    style="@style/cascadeDialogButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="@dimen/dp_0"
+                    android:minHeight="@dimen/dp_0"
+                    android:text="@string/beam_to_tv"
+                    android:textSize="@dimen/sp_10"
+                    app:backgroundTint="@android:color/transparent"
+                    app:cornerRadius="@dimen/dp_5" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:context=".fragments.PreviewFragment">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pagerPhotos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/bgTop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.4"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/bgBottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.4"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rlShare" />
+
+        <View
+            android:id="@+id/layout_hidden_actionbar_close"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_38"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/layout_hidden_actionbar_close_at_bottom"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_38"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_12"
+            android:background="?selectableItemBackgroundBorderless"
+            android:fitsSystemWindows="false"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rlShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:fitsSystemWindows="false"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/ic_share" />
+
+            <!--<ImageButton
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/btnShare"
+                android:background="?selectableItemBackgroundBorderless"
+                android:fitsSystemWindows="false"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/ic_delete" />-->
+        </RelativeLayout>
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupPreviewActions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="bgTop,bgBottom,btnBack,rlShare" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

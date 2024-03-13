@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isCaps"
+            type="boolean" />
+
+        <variable
+            name="keyboardApp"
+            type="com.app.cascadeos.window.KeyboardApp" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/img_bg_green"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/layout_keys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_one"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_1"
+                    app:layout_constraintEnd_toStartOf="@id/txt_two"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_two"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_2"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_one"
+                    app:layout_constraintEnd_toStartOf="@id/txt_three"
+                    app:layout_constraintStart_toEndOf="@id/txt_one"
+                    app:layout_constraintTop_toTopOf="@id/txt_one" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_three"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_3"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_two"
+                    app:layout_constraintEnd_toStartOf="@id/txt_four"
+                    app:layout_constraintStart_toEndOf="@id/txt_two"
+                    app:layout_constraintTop_toTopOf="@id/txt_two"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_four"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_4"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_three"
+                    app:layout_constraintEnd_toStartOf="@id/txt_five"
+                    app:layout_constraintStart_toEndOf="@id/txt_three"
+                    app:layout_constraintTop_toTopOf="@id/txt_three"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_five"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_5"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_four"
+                    app:layout_constraintEnd_toStartOf="@id/txt_six"
+                    app:layout_constraintStart_toEndOf="@id/txt_four"
+                    app:layout_constraintTop_toTopOf="@id/txt_four"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_six"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_6"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_five"
+                    app:layout_constraintEnd_toStartOf="@id/txt_seven"
+                    app:layout_constraintStart_toEndOf="@id/txt_five"
+                    app:layout_constraintTop_toTopOf="@id/txt_five"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_seven"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_7"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_six"
+                    app:layout_constraintEnd_toStartOf="@id/txt_eight"
+                    app:layout_constraintStart_toEndOf="@id/txt_six"
+                    app:layout_constraintTop_toTopOf="@id/txt_six"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_eight"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_8"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_seven"
+                    app:layout_constraintEnd_toStartOf="@id/txt_nine"
+                    app:layout_constraintStart_toEndOf="@id/txt_seven"
+                    app:layout_constraintTop_toTopOf="@id/txt_seven"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_nine"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_9"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_eight"
+                    app:layout_constraintEnd_toStartOf="@id/txt_zero"
+                    app:layout_constraintStart_toEndOf="@id/txt_eight"
+                    app:layout_constraintTop_toTopOf="@id/txt_eight"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_zero"
+                    style="@style/KeyboardDigitStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_0"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_nine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_nine"
+                    app:layout_constraintTop_toTopOf="@id/txt_nine"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_alphabet_row_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/dp_30">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_q"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_q"
+                    app:layout_constraintEnd_toStartOf="@id/txt_w"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_w"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_w"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_q"
+                    app:layout_constraintEnd_toStartOf="@id/txt_e"
+                    app:layout_constraintStart_toEndOf="@id/txt_q"
+                    app:layout_constraintTop_toTopOf="@id/txt_q"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_e"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_e"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_w"
+                    app:layout_constraintEnd_toStartOf="@id/txt_r"
+                    app:layout_constraintStart_toEndOf="@id/txt_w"
+                    app:layout_constraintTop_toTopOf="@id/txt_w"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_r"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_r"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_e"
+                    app:layout_constraintEnd_toStartOf="@id/txt_t"
+                    app:layout_constraintStart_toEndOf="@id/txt_e"
+                    app:layout_constraintTop_toTopOf="@id/txt_e"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_t"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_t"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_r"
+                    app:layout_constraintEnd_toStartOf="@id/txt_y"
+                    app:layout_constraintStart_toEndOf="@id/txt_r"
+                    app:layout_constraintTop_toTopOf="@id/txt_r"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_y"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_y"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_t"
+                    app:layout_constraintEnd_toStartOf="@id/txt_u"
+                    app:layout_constraintStart_toEndOf="@id/txt_t"
+                    app:layout_constraintTop_toTopOf="@id/txt_t"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_u"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_u"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_y"
+                    app:layout_constraintEnd_toStartOf="@id/txt_i"
+                    app:layout_constraintStart_toEndOf="@id/txt_y"
+                    app:layout_constraintTop_toTopOf="@id/txt_y"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_i"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_i"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_u"
+                    app:layout_constraintEnd_toStartOf="@id/txt_o"
+                    app:layout_constraintStart_toEndOf="@id/txt_u"
+                    app:layout_constraintTop_toTopOf="@id/txt_u"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_o"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_o"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_i"
+                    app:layout_constraintEnd_toStartOf="@id/txt_p"
+                    app:layout_constraintStart_toEndOf="@id/txt_i"
+                    app:layout_constraintTop_toTopOf="@id/txt_i"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_p"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_p"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_o"
+                    app:layout_constraintEnd_toStartOf="@id/txt_dash"
+                    app:layout_constraintStart_toEndOf="@id/txt_o"
+                    app:layout_constraintTop_toTopOf="@id/txt_o"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_dash"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_dash"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_p"
+                    app:layout_constraintEnd_toStartOf="@id/txt_colon"
+                    app:layout_constraintStart_toEndOf="@id/txt_p"
+                    app:layout_constraintTop_toTopOf="@id/txt_p"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_colon"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_colon"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_dash"
+                    app:layout_constraintEnd_toStartOf="@id/txt_semi_colon"
+                    app:layout_constraintStart_toEndOf="@id/txt_dash"
+                    app:layout_constraintTop_toTopOf="@id/txt_dash"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_semi_colon"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_semi_colon"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_colon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_colon"
+                    app:layout_constraintTop_toTopOf="@id/txt_colon"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_alphabet_row_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/dp_50">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_a"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_a"
+                    app:layout_constraintEnd_toStartOf="@id/txt_s"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_s"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_s"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_a"
+                    app:layout_constraintEnd_toStartOf="@id/txt_d"
+                    app:layout_constraintStart_toEndOf="@id/txt_a"
+                    app:layout_constraintTop_toTopOf="@id/txt_a"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_d"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_d"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_s"
+                    app:layout_constraintEnd_toStartOf="@id/txt_f"
+                    app:layout_constraintStart_toEndOf="@id/txt_s"
+                    app:layout_constraintTop_toTopOf="@id/txt_s"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_f"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_f"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_d"
+                    app:layout_constraintEnd_toStartOf="@id/txt_g"
+                    app:layout_constraintStart_toEndOf="@id/txt_d"
+                    app:layout_constraintTop_toTopOf="@id/txt_d"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_g"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_g"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_f"
+                    app:layout_constraintEnd_toStartOf="@id/txt_h"
+                    app:layout_constraintStart_toEndOf="@id/txt_f"
+                    app:layout_constraintTop_toTopOf="@id/txt_f"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_h"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_h"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_g"
+                    app:layout_constraintEnd_toStartOf="@id/txt_j"
+                    app:layout_constraintStart_toEndOf="@id/txt_g"
+                    app:layout_constraintTop_toTopOf="@id/txt_g"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_j"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_j"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_h"
+                    app:layout_constraintEnd_toStartOf="@id/txt_k"
+                    app:layout_constraintStart_toEndOf="@id/txt_h"
+                    app:layout_constraintTop_toTopOf="@id/txt_h"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_k"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_k"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_j"
+                    app:layout_constraintEnd_toStartOf="@id/txt_l"
+                    app:layout_constraintStart_toEndOf="@id/txt_j"
+                    app:layout_constraintTop_toTopOf="@id/txt_j"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_l"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_l"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_k"
+                    app:layout_constraintEnd_toStartOf="@id/txt_open_bracket"
+                    app:layout_constraintStart_toEndOf="@id/txt_k"
+                    app:layout_constraintTop_toTopOf="@id/txt_k"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_open_bracket"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_open_round_bracket"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_l"
+                    app:layout_constraintEnd_toStartOf="@id/txt_close_bracket"
+                    app:layout_constraintStart_toEndOf="@id/txt_l"
+                    app:layout_constraintTop_toTopOf="@id/txt_l"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_close_bracket"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_close_round_bracket"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_open_bracket"
+                    app:layout_constraintEnd_toStartOf="@id/txt_dollar"
+                    app:layout_constraintStart_toEndOf="@id/txt_open_bracket"
+                    app:layout_constraintTop_toTopOf="@id/txt_open_bracket"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_dollar"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_dollar"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_close_bracket"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_close_bracket"
+                    app:layout_constraintTop_toTopOf="@id/txt_close_bracket"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_alphabet_row_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/dp_90">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_z"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_z"
+                    app:layout_constraintEnd_toStartOf="@id/txt_x"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_x"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_x"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_z"
+                    app:layout_constraintEnd_toStartOf="@id/txt_c"
+                    app:layout_constraintStart_toEndOf="@id/txt_z"
+                    app:layout_constraintTop_toTopOf="@id/txt_z"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_c"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_c"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_x"
+                    app:layout_constraintEnd_toStartOf="@id/txt_v"
+                    app:layout_constraintStart_toEndOf="@id/txt_x"
+                    app:layout_constraintTop_toTopOf="@id/txt_x"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_v"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_v"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_c"
+                    app:layout_constraintEnd_toStartOf="@id/txt_b"
+                    app:layout_constraintStart_toEndOf="@id/txt_c"
+                    app:layout_constraintTop_toTopOf="@id/txt_c"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_b"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_b"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_v"
+                    app:layout_constraintEnd_toStartOf="@id/txt_n"
+                    app:layout_constraintStart_toEndOf="@id/txt_v"
+                    app:layout_constraintTop_toTopOf="@id/txt_v"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_n"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_n"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_b"
+                    app:layout_constraintEnd_toStartOf="@id/txt_m"
+                    app:layout_constraintStart_toEndOf="@id/txt_b"
+                    app:layout_constraintTop_toTopOf="@id/txt_b"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_m"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_m"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_n"
+                    app:layout_constraintEnd_toStartOf="@id/txt_and"
+                    app:layout_constraintStart_toEndOf="@id/txt_n"
+                    app:layout_constraintTop_toTopOf="@id/txt_n"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_and"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_and"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_m"
+                    app:layout_constraintEnd_toStartOf="@id/txt_at"
+                    app:layout_constraintStart_toEndOf="@id/txt_m"
+                    app:layout_constraintTop_toTopOf="@id/txt_m"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_at"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_at"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_and"
+                    app:layout_constraintEnd_toStartOf="@id/txt_quotes"
+                    app:layout_constraintStart_toEndOf="@id/txt_and"
+                    app:layout_constraintTop_toTopOf="@id/txt_and"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_quotes"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_quotes"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_at"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_at"
+                    app:layout_constraintTop_toTopOf="@id/txt_at"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_special_char_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/dp_130">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layout_add"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_alphabet_frame"
+                    android:gravity="center"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@id/txt_plus"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_add"
+                        style="@style/KeyboardAlphabetStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="@string/_plus" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_15"
+                        android:layout_height="@dimen/dp_15"
+                        android:layout_marginStart="@dimen/dp_2"
+                        android:padding="@dimen/dp_2"
+                        app:srcCompat="@drawable/ic_contact" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_plus"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/layout_add"
+                    app:layout_constraintEnd_toStartOf="@id/txt_coma"
+                    app:layout_constraintStart_toEndOf="@id/layout_add"
+                    app:layout_constraintTop_toTopOf="@id/layout_add"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_coma"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_coma"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_plus"
+                    app:layout_constraintEnd_toStartOf="@id/txt_dot"
+                    app:layout_constraintStart_toEndOf="@id/txt_plus"
+                    app:layout_constraintTop_toTopOf="@id/txt_plus"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_dot"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_dot"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_coma"
+                    app:layout_constraintEnd_toStartOf="@id/txt_question_mark"
+                    app:layout_constraintStart_toEndOf="@id/txt_coma"
+                    app:layout_constraintTop_toTopOf="@id/txt_coma"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_question_mark"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_question_mark"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_dot"
+                    app:layout_constraintEnd_toStartOf="@id/txt_exclamation_mark"
+                    app:layout_constraintStart_toEndOf="@id/txt_dot"
+                    app:layout_constraintTop_toTopOf="@id/txt_dot"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_exclamation_mark"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_exclamation_mark"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_question_mark"
+                    app:layout_constraintEnd_toStartOf="@id/txt_single_quot"
+                    app:layout_constraintStart_toEndOf="@id/txt_question_mark"
+                    app:layout_constraintTop_toTopOf="@id/txt_question_mark"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_single_quot"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_single_quot"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_exclamation_mark"
+                    app:layout_constraintEnd_toStartOf="@id/txt_equal_to"
+                    app:layout_constraintStart_toEndOf="@id/txt_exclamation_mark"
+                    app:layout_constraintTop_toTopOf="@id/txt_exclamation_mark"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_equal_to"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_equal_to"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_single_quot"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_single_quot"
+                    app:layout_constraintTop_toTopOf="@id/txt_single_quot"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/dp_100">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/ib_back"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:src="@drawable/ic_arrow_back_small"
+                    app:layout_constraintEnd_toStartOf="@id/txt_caps"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintWidth_percent="0.1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_caps"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_caps"
+                    app:layout_constraintBottom_toBottomOf="@+id/ib_back"
+                    app:layout_constraintEnd_toStartOf="@id/txt_space"
+                    app:layout_constraintStart_toEndOf="@id/ib_back"
+                    app:layout_constraintTop_toTopOf="@id/ib_back"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.2"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_space"
+                    style="@style/KeyboardSpaceStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/dp_1"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text=""
+                    android:textAllCaps="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_caps"
+                    app:layout_constraintEnd_toStartOf="@id/txt_return"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toEndOf="@id/txt_caps"
+                    app:layout_constraintTop_toTopOf="@id/txt_caps"
+                    app:layout_constraintWidth_percent="0.4"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_return"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:text="@string/_return"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_space"
+                    app:layout_constraintEnd_toStartOf="@id/ib_close"
+                    app:layout_constraintStart_toEndOf="@id/txt_space"
+                    app:layout_constraintTop_toTopOf="@id/txt_space"
+                    app:layout_constraintWidth_percent="0.2"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/ib_close"
+                    style="@style/KeyboardAlphabetStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{keyboardApp::onClick}"
+                    android:soundEffectsEnabled="false"
+                    android:src="@drawable/ic_close_small"
+                    app:layout_constraintBottom_toBottomOf="@id/txt_return"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/txt_return"
+                    app:layout_constraintTop_toTopOf="@id/txt_return"
+                    app:layout_constraintWidth_percent="0.1"
+                    app:layout_wrapBehaviorInParent="horizontal_only" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAppList"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/dp_10"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp_2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/layout_keys"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_app_icon" />
+
+        <View
+            android:id="@+id/layout_hidden_actionbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/include_action_bar"
+            android:animateLayoutChanges="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_resize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_resize"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_resize_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_3"
+            android:src="@drawable/ic_resize"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        <!--        <include-->
+        <!--            android:id="@+id/layout_portrait"-->
+        <!--            layout="@layout/layout_keyboard_portrait"/>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

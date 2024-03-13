@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:context=".fragments.CameraFragment">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/layout_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.4"
+            android:background="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/btnRecordVideo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingBottom="@dimen/dp_4"
+            android:rotation="-90"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/viewBg2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="00:00" />
+
+        <TextView
+            android:id="@+id/tvPhoto"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_4"
+            android:paddingBottom="@dimen/dp_4"
+            android:rotation="-90"
+            android:text="@string/photo"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btnRecordVideo"
+            app:layout_constraintTop_toBottomOf="@id/tvVideo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tvVideo"
+            style="@style/photoButtonStyle"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:rotation="-90"
+            android:text="@string/video"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/btnRecordVideo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnRecordVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/dp_32"
+            android:src="@drawable/ic_capture_video"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnGallery"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/ic_capture_camera"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_no_picture"
+            app:layout_constraintBottom_toTopOf="@id/btnRecordVideo"
+            app:layout_constraintEnd_toEndOf="@id/btnRecordVideo"
+            app:layout_constraintStart_toStartOf="@id/btnRecordVideo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@drawable/bg_button_round"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flip_camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnRecordVideo"
+            app:layout_constraintStart_toStartOf="@id/btnRecordVideo"
+            app:layout_constraintTop_toBottomOf="@id/btnRecordVideo" />
+
+        <View
+            android:id="@+id/viewBg2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/black_40"
+            android:elevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnGrid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnGrid"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_grid_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnFlashVideo"
+            app:layout_constraintStart_toStartOf="@id/btnFlashVideo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <ImageButton
+            android:id="@+id/btnFlashVideo"
+            android:layout_width="@dimen/dp_36"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginStart="@dimen/dp_32"
+            android:background="@android:color/transparent"
+            android:elevation="1dp"
+            android:padding="@dimen/dp_8"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_flash_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.7" />
+
+        <View
+            android:id="@+id/gridVertical1"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/gridVertical2"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:alpha="0.5"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/gridHorizontal1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:alpha="0.5"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.33" />
+
+        <View
+            android:id="@+id/gridHorizontal2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:alpha="0.5"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.66" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupGridLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="gridVertical1,gridVertical2,gridHorizontal1,gridHorizontal2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

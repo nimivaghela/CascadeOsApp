@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/img_bg_green"
+        tools:context=".ui.DigitalLockerActivity">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_digi_locker_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginVertical="@dimen/dp_20"
+            android:src="@drawable/ic_speaker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_digitalLocker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_24"
+            android:src="@drawable/digital_locker"
+            app:layout_constraintBottom_toBottomOf="@id/img_header"
+            app:layout_constraintStart_toEndOf="@id/imgSpeaker"
+            app:layout_constraintTop_toTopOf="@id/img_header" />
+
+        <ImageView
+            android:id="@+id/imgTM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_tm"
+            app:layout_constraintBottom_toTopOf="@id/img_digitalLocker"
+            app:layout_constraintStart_toEndOf="@id/img_digitalLocker"
+            app:layout_constraintTop_toTopOf="@id/img_digitalLocker" />
+
+        <ImageView
+            android:id="@+id/imgCoolTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cool_tv"
+            app:layout_constraintBottom_toBottomOf="@id/img_header"
+            app:layout_constraintEnd_toStartOf="@id/imgTM2"
+            app:layout_constraintTop_toTopOf="@id/img_header"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgTM2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_44"
+            android:src="@drawable/ic_tm"
+            app:layout_constraintBottom_toTopOf="@id/imgCoolTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgCoolTV" />
+
+        <LinearLayout
+            android:id="@+id/menuLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imgSpeaker"
+            app:layout_constraintTop_toBottomOf="@id/imgSpeaker">
+
+            <TextView
+                android:id="@+id/tvPurchasedVideos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:text="@string/purchased_videos"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="@id/imgSpeaker"
+                app:layout_constraintTop_toBottomOf="@id/imgSpeaker" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:layout_weight="0.6"
+                app:layout_constraintBottom_toBottomOf="@id/tvPurchasedVideos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvPurchasedVideos"
+                app:layout_constraintTop_toTopOf="@id/tvPurchasedVideos">
+
+                <ImageView
+                    android:id="@+id/imgPrevious"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/previous_arrow_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.1" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvLockerOptions"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toStartOf="@id/imgNext"
+                    app:layout_constraintStart_toEndOf="@id/imgPrevious"
+                    app:layout_constraintWidth_percent="0.75"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/item_digital_locker_options" />
+
+                <ImageView
+                    android:id="@+id/imgNext"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/next_arrow_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgArrowBackward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backward_arrow_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/menuLayout"
+            app:layout_constraintTop_toBottomOf="@id/menuLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lockerRecyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_5"
+            android:layout_marginVertical="@dimen/dp_12"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgArrowForward"
+            app:layout_constraintStart_toEndOf="@id/imgArrowBackward"
+            app:layout_constraintTop_toBottomOf="@id/menuLayout"
+            tools:itemCount="10"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_locker_recyclerview" />
+
+        <ImageView
+            android:id="@+id/imgArrowForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_32"
+            android:src="@drawable/forward_arrow_selector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menuLayout" />
+
+        <View
+            android:id="@+id/layout_hidden_actionbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/activity_action_bar"
+            android:animateLayoutChanges="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dialerFragment"
+            type="com.app.cascadeos.ui.fragment.DialerFragment" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edit_dialer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/img_dialer_edit_bg"
+            android:focusable="false"
+            android:fontFamily="@font/inter_semi_bold"
+            android:gravity="center_vertical"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/dp_16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9876543210" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_one"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_1"
+            app:layout_constraintBottom_toTopOf="@+id/txt_four"
+            app:layout_constraintEnd_toStartOf="@id/txt_two"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_dialer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_two"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_2"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_one"
+            app:layout_constraintEnd_toStartOf="@id/txt_three"
+            app:layout_constraintStart_toEndOf="@id/txt_one"
+            app:layout_constraintTop_toTopOf="@id/txt_one" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_three"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_3"
+            app:layout_constraintBottom_toBottomOf="@id/txt_two"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txt_two"
+            app:layout_constraintTop_toTopOf="@id/txt_two"
+            app:layout_wrapBehaviorInParent="horizontal_only" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_four"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_4"
+            app:layout_constraintBottom_toTopOf="@+id/txt_seven"
+            app:layout_constraintEnd_toEndOf="@id/txt_one"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/txt_one"
+            app:layout_constraintTop_toBottomOf="@+id/txt_one" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_five"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_5"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_four"
+            app:layout_constraintEnd_toEndOf="@id/txt_two"
+            app:layout_constraintStart_toStartOf="@id/txt_two"
+            app:layout_constraintTop_toTopOf="@+id/txt_four" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_six"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_6"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_five"
+            app:layout_constraintEnd_toEndOf="@id/txt_three"
+            app:layout_constraintStart_toStartOf="@id/txt_three"
+            app:layout_constraintTop_toTopOf="@+id/txt_five" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_seven"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_7"
+            app:layout_constraintBottom_toTopOf="@+id/txt_star"
+            app:layout_constraintEnd_toEndOf="@id/txt_four"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/txt_four"
+            app:layout_constraintTop_toBottomOf="@+id/txt_four" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_eight"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_8"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_seven"
+            app:layout_constraintEnd_toEndOf="@id/txt_five"
+            app:layout_constraintStart_toStartOf="@id/txt_five"
+            app:layout_constraintTop_toTopOf="@id/txt_seven" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_nine"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_9"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_eight"
+            app:layout_constraintEnd_toEndOf="@+id/txt_six"
+            app:layout_constraintStart_toStartOf="@+id/txt_six"
+            app:layout_constraintTop_toTopOf="@+id/txt_eight" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_zero"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_0"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_star"
+            app:layout_constraintEnd_toEndOf="@+id/txt_eight"
+            app:layout_constraintStart_toStartOf="@+id/txt_eight"
+            app:layout_constraintTop_toTopOf="@+id/txt_star" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_star"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_star"
+            app:layout_constraintBottom_toTopOf="@+id/layout_add"
+            app:layout_constraintEnd_toEndOf="@+id/txt_seven"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/txt_seven"
+            app:layout_constraintTop_toBottomOf="@+id/txt_seven" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_hash"
+            style="@style/DialerDigitStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            android:text="@string/_hash"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_zero"
+            app:layout_constraintEnd_toEndOf="@+id/txt_nine"
+            app:layout_constraintStart_toStartOf="@+id/txt_nine"
+            app:layout_constraintTop_toTopOf="@+id/txt_zero" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_digit_frame"
+            android:gravity="center"
+            android:onClick="@{dialerFragment::onClick}"
+            android:soundEffectsEnabled="false"
+            app:layout_constraintBottom_toTopOf="@id/rvPhoneSystem"
+            app:layout_constraintEnd_toEndOf="@+id/txt_star"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/txt_star"
+            app:layout_constraintTop_toBottomOf="@+id/txt_star">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_add"
+                style="@style/DialerDigitStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@string/_plus" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                app:srcCompat="@drawable/ic_contact" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_digit_frame"
+            android:gravity="center"
+            android:onClick="@{dialerFragment::onClick}"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_add"
+            app:layout_constraintEnd_toEndOf="@+id/txt_zero"
+            app:layout_constraintStart_toStartOf="@+id/txt_zero"
+            app:layout_constraintTop_toTopOf="@+id/layout_add">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                app:srcCompat="@drawable/ic_call" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_call"
+                style="@style/DialerDigitStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:background="@null"
+                android:text="@string/call"
+                android:textSize="@dimen/sp_12"
+                app:fontFamily="@font/inter" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_digit_frame"
+            android:gravity="center"
+            android:onClick="@{dialerFragment::onClick}"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_call"
+            app:layout_constraintEnd_toEndOf="@+id/txt_hash"
+            app:layout_constraintStart_toStartOf="@+id/txt_hash"
+            app:layout_constraintTop_toTopOf="@+id/layout_call">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/txt_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_clear" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPhoneSystem"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="63dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/dp_10"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_multicast_app" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

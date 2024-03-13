@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clCoolEcallList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_8"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:paddingVertical="@dimen/dp_8"
+    android:background="@drawable/ic_item_setting_bg">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_cool_ecall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_cool_ecall" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_coolECall_Name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_6"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/img_video"
+        app:layout_constraintStart_toEndOf="@+id/img_cool_ecall"
+        app:layout_constraintTop_toTopOf="@+id/img_cool_ecall"
+        tools:text="Emilly A Street" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_user_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_6"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/color_user_number"
+        android:textSize="@dimen/sp_8"
+        app:layout_constraintEnd_toStartOf="@+id/img_video"
+        app:layout_constraintStart_toEndOf="@+id/img_cool_ecall"
+        app:layout_constraintTop_toBottomOf="@+id/tv_coolECall_Name"
+        tools:text="+91 987654321" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_video"
+        android:layout_width="@dimen/dp_23"
+        android:layout_height="@dimen/dp_23"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.421"
+        android:src="@drawable/ic_ecall_video" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

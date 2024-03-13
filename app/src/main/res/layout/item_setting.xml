@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clSetting"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/dp_8"
+    android:background="@drawable/ic_item_setting_bg"
+    >
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_3"
+        android:padding="@dimen/dp_6"
+        tools:src="@drawable/ic_alarm_clock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_setting_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter"
+        tools:text="Network &amp; Internet"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/dp_6"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_setting"
+        app:layout_constraintTop_toTopOf="@+id/img_setting" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_setting_describtion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_6"
+        android:fontFamily="@font/inter"
+        android:textColor="@color/color_setting_grey"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_setting"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_item"
+        tools:text="Mobile wi-fi hotspot" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

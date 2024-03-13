@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="@dimen/dp_8"
+        >
+
+        <com.otaliastudios.cameraview.CameraView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cameraExperimental="true"
+            app:cameraEngine="camera2"
+            app:cameraPreview="texture"
+            app:cameraPlaySounds="true"
+            app:cameraGrid="off"
+            app:cameraFlash="off"
+            app:cameraAudio="on"
+            app:cameraFacing="back"
+            app:cameraGesturePinch="none"
+            app:cameraMode="picture"
+            app:cameraUseDeviceOrientation="true"
+            app:cameraWhiteBalance="auto"
+            app:cameraGestureScrollHorizontal="none"
+            app:cameraPreviewFrameRateExact="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

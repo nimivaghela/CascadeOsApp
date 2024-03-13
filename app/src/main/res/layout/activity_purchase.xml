@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/img_bg_green"
+        tools:context=".ui.PurchaseActivity">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_digi_locker_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginVertical="@dimen/dp_20"
+            android:src="@drawable/ic_speaker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_digitalLocker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_24"
+            android:src="@drawable/digital_locker"
+            app:layout_constraintBottom_toBottomOf="@id/img_header"
+            app:layout_constraintStart_toEndOf="@id/imgSpeaker"
+            app:layout_constraintTop_toTopOf="@id/img_header" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgTM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_tm"
+            app:layout_constraintBottom_toTopOf="@id/img_digitalLocker"
+            app:layout_constraintStart_toEndOf="@id/img_digitalLocker"
+            app:layout_constraintTop_toTopOf="@id/img_digitalLocker" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgCoolTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cool_tv"
+            app:layout_constraintBottom_toBottomOf="@id/img_header"
+            app:layout_constraintEnd_toStartOf="@id/imgTM2"
+            app:layout_constraintTop_toTopOf="@id/img_header"
+            app:tint="@color/white" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgTM2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_44"
+            android:src="@drawable/ic_tm"
+            app:layout_constraintBottom_toTopOf="@id/imgCoolTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgCoolTV" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:src="@drawable/img_avtar_preview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imgSpeaker"
+            app:layout_constraintTop_toBottomOf="@id/imgSpeaker" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_30"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:text="@string/avatar"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_36"
+            android:textStyle="bold"
+            app:fontFamily="@font/fredoka_light"
+            app:layout_constraintStart_toEndOf="@id/imgPhoto"
+            app:layout_constraintTop_toTopOf="@id/imgPhoto" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/directed_by_james_cameron"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:fontFamily="@font/fredoka_regular"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <LinearLayout
+            android:id="@+id/layoutPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:background="@drawable/ic_grey_button_gradient"
+            android:elevation="@dimen/dp_10"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_5"
+            app:layout_constraintBottom_toTopOf="@+id/layoutViewTrailer"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuide"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnPrice"
+                style="@style/cascadeDialogButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/dp_0"
+                android:minHeight="@dimen/dp_0"
+                android:text="@string/price_9_95"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_14"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="@dimen/dp_5"
+                app:fontFamily="@font/fredoka_regular" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutViewTrailer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:background="@drawable/ic_grey_button_gradient"
+            android:elevation="@dimen/dp_10"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalGuide"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPrice">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/btnViewTrailer"
+                style="@style/cascadeDialogButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/dp_0"
+                android:minHeight="@dimen/dp_0"
+                android:text="@string/view_trailer"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_14"
+                app:backgroundTint="@android:color/transparent"
+                app:cornerRadius="@dimen/dp_5"
+                app:fontFamily="@font/fredoka_regular" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPurchasedVideos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_30"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:text="@string/confirm_purchase"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold"
+            app:fontFamily="@font/fredoka_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_header" />
+
+        <TextView
+            android:id="@+id/tvDragInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/drag_to_your_locker_to_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:fontFamily="@font/fredoka_regular"
+            app:layout_constraintStart_toStartOf="@id/tvPurchasedVideos"
+            app:layout_constraintTop_toBottomOf="@id/tvPurchasedVideos" />
+
+        <TextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            app:fontFamily="@font/fredoka_regular"
+            app:layout_constraintBottom_toTopOf="@+id/imgDragTo"
+            app:layout_constraintEnd_toStartOf="@id/imgLocker"
+            app:layout_constraintStart_toEndOf="@id/imgPreview"
+            app:layout_constraintTop_toTopOf="@+id/imgPreview"
+            app:layout_constraintVertical_bias="0.50" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgDragTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_drag_to"
+            app:layout_constraintBottom_toBottomOf="@id/imgLocker"
+            app:layout_constraintEnd_toStartOf="@id/imgLocker"
+            app:layout_constraintStart_toEndOf="@id/imgPreview"
+            app:layout_constraintTop_toTopOf="@id/imgLocker" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgLocker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:src="@drawable/img_lockers"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDragInfo" />
+
+
+        <View
+            android:id="@+id/highlightView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="46dp"
+            android:background="@drawable/ic_video_back_shadow"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@id/imgLocker"
+            app:layout_constraintEnd_toStartOf="@id/imgDragTo"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide"
+            app:layout_constraintTop_toTopOf="@id/imgLocker" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_light_door"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:alpha="0"
+            android:src="@drawable/img_door_light"
+            app:layout_constraintBottom_toBottomOf="@id/imgLocker"
+            app:layout_constraintEnd_toEndOf="@id/img_media_door"
+            app:layout_constraintTop_toTopOf="@id/imgLocker" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintVertical_bias="0.55"
+            android:src="@drawable/img_avtar_preview_mini"
+            app:layout_constraintBottom_toBottomOf="@id/imgLocker"
+            app:layout_constraintEnd_toStartOf="@id/imgDragTo"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide"
+            app:layout_constraintTop_toTopOf="@id/imgLocker"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_media_door"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:src="@drawable/img_movie_door"
+            app:layout_constraintBottom_toBottomOf="@id/imgLocker"
+            app:layout_constraintEnd_toEndOf="@id/imgLocker"
+            app:layout_constraintStart_toStartOf="@id/imgLocker"
+            app:layout_constraintTop_toTopOf="@id/imgLocker" />
+
+
+
+
+
+        <View
+            android:id="@+id/layout_hidden_actionbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/action_bar"
+            layout="@layout/activity_action_bar"
+            android:animateLayoutChanges="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

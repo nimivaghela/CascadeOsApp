@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_rootSetting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_click_vedio_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_setting_bg"
+            android:fontFamily="@font/inter"
+            android:gravity="center"
+            android:padding="@dimen/dp_16"
+            android:text="@string/tv_settings"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginEnd="@dimen/dp_14"
+            android:background="@drawable/rounded_shape"
+            android:hint="Search settings"
+            android:textColor="@color/black"
+            android:imeOptions="flagNoExtractUi"
+            android:padding="8dp"
+            android:paddingStart="@dimen/dp_18"
+            android:paddingTop="@dimen/dp_18"
+            android:paddingEnd="@dimen/dp_18"
+            android:paddingBottom="@dimen/dp_18"
+            android:textColorHint="@color/black_80"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_click_vedio_shop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSettingList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editText"
+            app:layout_constraintStart_toStartOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            tools:itemCount="15"
+            tools:listitem="@layout/item_setting" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

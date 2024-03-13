@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isOtherUserMsg"
+            type="boolean" />
+
+        <variable
+            name="message"
+            type="String" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dp_3">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_msg_left"
+            visibleGone="@{isOtherUserMsg}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dp_8"
+            android:maxWidth="@dimen/dp_250"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/message_bg_left"
+            android:paddingHorizontal="@dimen/dp_8"
+            android:text="@{message}"
+            android:textColor="@color/black"
+            app:fontFamily="@font/inter_semi_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Hi Hello How  Are You" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_msg_right"
+            visibleGone="@{!isOtherUserMsg}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_8"
+            android:background="@drawable/message_bg_right"
+            android:maxWidth="@dimen/dp_250"
+            android:paddingHorizontal="@dimen/dp_8"
+            android:text="@{message}"
+            android:textColor="@color/black"
+            app:fontFamily="@font/inter_semi_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
